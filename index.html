@@ -1,0 +1,446 @@
+
+
+
+
+60% off ₹5000 means:
+
+Discount = 60% × 5000 = ₹3000
+
+Final price = ₹5000 − ₹3000 = ₹2000
+
+So, after a 60% discount, you pay ₹2000.
+
+
+10% on 2000
+
+10% of ₹2000 = ₹200
+
+If you're adding another 10% discount on the already discounted price of ₹2000:
+
+₹2000 − ₹200 = ₹1800
+
+Final amount: ₹1800.
+
+
+create a calculator for this type of whole caluclation
+I will be providing voucher on this much off and then if it is sold then i will be providing that sales man x percent of that revenue
+need a calcutaltor for this tuff
+
+Here's a simple calculator you can use.
+
+Inputs
+Original Price (₹)
+
+Voucher Discount (%) or Voucher Amount (₹)
+
+Salesman Commission (%)
+
+Formula
+If voucher is percentage based:
+Selling Price = Original Price × (1 - VoucherDiscount/100)
+
+Salesman Commission Amount = Selling Price × (Commission/100)
+
+Your Revenue After Commission = Selling Price - Salesman Commission Amount
+If voucher is fixed amount:
+Selling Price = Original Price - VoucherAmount
+
+Salesman Commission Amount = Selling Price × (Commission/100)
+
+Your Revenue After Commission = Selling Price - Salesman Commission Amount
+Example
+Original Price = ₹5000
+
+Voucher = 60%
+
+Commission = 10%
+
+Selling Price = 5000 × (1 - 60/100)
+              = ₹2000
+
+Salesman Commission = 2000 × (10/100)
+                     = ₹200
+
+Your Revenue = 2000 - 200
+             = ₹1800
+HTML Calculator
+Save as index.html and open in a browser:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voucher & Commission Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3f3f3;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Voucher & Commission Calculator</h2>
+
+<label>Original Price (₹)</label>
+<input type="number" id="price" placeholder="5000">
+
+<label>Voucher Discount (%)</label>
+<input type="number" id="discount" placeholder="60">
+
+<label>Salesman Commission (%)</label>
+<input type="number" id="commission" placeholder="10">
+
+<button onclick="calculate()">Calculate</button>
+
+<div class="result" id="result"></div>
+
+<script>
+function calculate() {
+    const price = parseFloat(document.getElementById('price').value) || 0;
+    const discount = parseFloat(document.getElementById('discount').value) || 0;
+    const commission = parseFloat(document.getElementById('commission').value) || 0;
+
+    const sellingPrice = price - (price * discount / 100);
+    const commissionAmount = sellingPrice * commission / 100;
+    const finalRevenue = sellingPrice - commissionAmount;
+
+    document.getElementById('result').innerHTML = `
+        <strong>Selling Price:</strong> ₹${sellingPrice.toFixed(2)}<br>
+        <strong>Salesman Commission:</strong> ₹${commissionAmount.toFixed(2)}<br>
+        <strong>Your Revenue:</strong> ₹${finalRevenue.toFixed(2)}
+    `;
+}
+</script>
+
+</body>
+</html>
+For your use case (multiple salesmen, tracking vouchers used, monthly payouts, total revenue, profit dashboard), I can also create a complete Excel sheet with automatic formulas or a professional web dashboard.
+
+
+ggive index html and all inside it
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voucher & Sales Commission Calculator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Segoe UI,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0f172a;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+    background:#111827;
+    border:1px solid #1f2937;
+    border-radius:20px;
+    padding:30px;
+    color:white;
+    box-shadow:0 20px 50px rgba(0,0,0,.3);
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    color:#94a3b8;
+    margin-bottom:30px;
+}
+
+.grid{
+    display:grid;
+    gap:18px;
+}
+
+.field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+label{
+    color:#cbd5e1;
+    font-size:14px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #334155;
+    background:#0f172a;
+    color:white;
+    font-size:15px;
+    outline:none;
+}
+
+input:focus,select:focus{
+    border-color:#3b82f6;
+}
+
+button{
+    margin-top:10px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.results{
+    margin-top:25px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:#0f172a;
+    border:1px solid #1e293b;
+    padding:18px;
+    border-radius:14px;
+}
+
+.card-title{
+    color:#94a3b8;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.card-value{
+    font-size:24px;
+    font-weight:700;
+}
+
+.green{
+    color:#22c55e;
+}
+
+.orange{
+    color:#f59e0b;
+}
+
+.blue{
+    color:#60a5fa;
+}
+
+.red{
+    color:#ef4444;
+}
+
+.breakdown{
+    margin-top:25px;
+    background:#0f172a;
+    border:1px solid #1e293b;
+    border-radius:14px;
+    padding:20px;
+    line-height:2;
+}
+
+@media(max-width:600px){
+    h1{
+        font-size:22px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Voucher & Commission Calculator</h1>
+    <p class="subtitle">
+        Calculate voucher discounts, salesman commissions and final revenue.
+    </p>
+
+    <div class="grid">
+
+        <div class="field">
+            <label>Original Product Price (₹)</label>
+            <input type="number" id="price" placeholder="5000">
+        </div>
+
+        <div class="field">
+            <label>Voucher Type</label>
+            <select id="voucherType">
+                <option value="percentage">Percentage Discount (%)</option>
+                <option value="fixed">Fixed Discount (₹)</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Voucher Value</label>
+            <input type="number" id="voucherValue" placeholder="60">
+        </div>
+
+        <div class="field">
+            <label>Salesman Commission (%)</label>
+            <input type="number" id="commission" placeholder="10">
+        </div>
+
+        <button onclick="calculate()">Calculate</button>
+
+    </div>
+
+    <div class="results">
+
+        <div class="card">
+            <div class="card-title">Original Price</div>
+            <div class="card-value blue" id="originalPrice">₹0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Discount Given</div>
+            <div class="card-value red" id="discountAmount">₹0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Selling Price</div>
+            <div class="card-value orange" id="sellingPrice">₹0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Salesman Commission</div>
+            <div class="card-value" id="commissionAmount">₹0</div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">Your Revenue</div>
+            <div class="card-value green" id="finalRevenue">₹0</div>
+        </div>
+
+    </div>
+
+    <div class="breakdown" id="breakdown">
+        Enter values and click Calculate.
+    </div>
+
+</div>
+
+<script>
+function formatCurrency(value){
+    return "₹" + value.toLocaleString("en-IN", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
+function calculate(){
+
+    const price =
+        parseFloat(document.getElementById("price").value) || 0;
+
+    const voucherType =
+        document.getElementById("voucherType").value;
+
+    const voucherValue =
+        parseFloat(document.getElementById("voucherValue").value) || 0;
+
+    const commissionPercent =
+        parseFloat(document.getElementById("commission").value) || 0;
+
+    let discountAmount = 0;
+
+    if(voucherType === "percentage"){
+        discountAmount = price * (voucherValue / 100);
+    }else{
+        discountAmount = voucherValue;
+    }
+
+    if(discountAmount > price){
+        discountAmount = price;
+    }
+
+    const sellingPrice = price - discountAmount;
+
+    const commissionAmount =
+        sellingPrice * (commissionPercent / 100);
+
+    const finalRevenue =
+        sellingPrice - commissionAmount;
+
+    document.getElementById("originalPrice").textContent =
+        formatCurrency(price);
+
+    document.getElementById("discountAmount").textContent =
+        formatCurrency(discountAmount);
+
+    document.getElementById("sellingPrice").textContent =
+        formatCurrency(sellingPrice);
+
+    document.getElementById("commissionAmount").textContent =
+        formatCurrency(commissionAmount);
+
+    document.getElementById("finalRevenue").textContent =
+        formatCurrency(finalRevenue);
+
+    document.getElementById("breakdown").innerHTML = `
+        <strong>Calculation Breakdown</strong><br>
+
+        Original Price = ${formatCurrency(price)}<br>
+
+        Discount = ${formatCurrency(discountAmount)}<br>
+
+        Selling Price = Original Price − Discount<br>
+        = ${formatCurrency(price)} − ${formatCurrency(discountAmount)}<br>
+        = <strong>${formatCurrency(sellingPrice)}</strong><br><br>
+
+        Salesman Commission = ${commissionPercent}% of Selling Price<br>
+        = ${formatCurrency(commissionAmount)}<br><br>
+
+        Final Revenue = Selling Price − Commission<br>
+        = ${formatCurrency(sellingPrice)} − ${formatCurrency(commissionAmount)}<br>
+        = <strong>${formatCurrency(finalRevenue)}</strong>
+    `;
+}
+</script>
+
+</body>
+</html>
+
